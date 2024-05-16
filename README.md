@@ -18,6 +18,7 @@
 
   Reason is to find correct ways to add src and include without needed to add too much or incorrect config.
 
+CMakeLists.txt
 ```
 #...
 FILE(GLOB lua_sources ${lua_SOURCE_DIR}/*.c)
@@ -29,10 +30,16 @@ list(REMOVE_ITEM lua_sources
 ) #default?
 #...
 add_library(lua ${lua_sources})
+# include folder only not files
+include_directories(${lua_SOURCE_DIR})
 #...
 add_executable(${PROJECT_NAME}_test src/test.c)
 target_link_libraries(${PROJECT_NAME}_test PUBLIC lua)
 ```
+
+# Notes:
+ - for help me remember how to set up right.
+ - there are many configs to know which is right.
 
 # links:
  - https://www.lua.org/manual/5.4/readme.html
